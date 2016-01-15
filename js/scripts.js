@@ -1,19 +1,17 @@
+
 $(document).ready(function(){
   $(".carousel").carousel(1);
-  var answersArray = ["coffee","water","wakeUp","excitement","sand"];
-  hideAll();
+  var answers = ["coffee","water","wakeUp","excitement","sand"];
+  var destinations = ["deMoines","seattle","vla","moon","risa"];
+  hideAllDestinations();
 
   $("#reset").click(function(){
     $('.carousel').carousel(1);
     $('.btn').removeClass('active');
-    answersArray.forEach(function(arr){
+    answers.forEach(function(arr){
       $('#'+arr+"1").parent().addClass('active');
       $('#'+arr+"1").prop('checked',true);
     });
-    // $('input[type=radio]').prop('checked', function () {
-    //     return this.getAttribute('checked') == 'checked';
-    // });
-
 
   });
 
@@ -26,15 +24,16 @@ $(document).ready(function(){
     total += parseInt($('input[name=sand]:checked').val());
 
     if(total < 6){
-      hideAll();
+      hideAllDestinations();
       $('.vla').show();
     }else if(total > 5 && total < 11){
-      hideAll();
+      hideAllDestinations();
       $('.deMoines').show();
     }else {
-      hideAll();
+      hideAllDestinations();
       $('.risa').show();
     }
+
 
     $('.carousel').carousel(7);
 
@@ -42,13 +41,10 @@ $(document).ready(function(){
     event.preventDefault();
   });
 
+  function hideAllDestinations() {
+    destinations.forEach(function(arr){
+      $('.'+arr).hide();
+    });
+  }
+
 });
-
-
-function hideAll(argument) {
-  $('.vla').hide();
-  $('.deMoines').hide();
-  $('.risa').hide();
-  $('.seattle').hide();
-  $('.moon').hide();
-}
