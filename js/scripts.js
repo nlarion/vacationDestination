@@ -3,6 +3,7 @@ $(document).ready(function(){
   $(".carousel").carousel(1);
   var answers = ["coffee","water","wakeUp","excitement","sand"];
   var destinations = ["deMoines","seattle","vla","moon","risa"];
+
   hideAllDestinations();
 
   $("#reset").click(function(){
@@ -17,11 +18,10 @@ $(document).ready(function(){
 
   $('form').submit(function(event){
 
-    var total = parseInt($('input[name=coffee]:checked').val());
-    total += parseInt($('input[name=water]:checked').val());
-    total += parseInt($('input[name=wakeUp]:checked').val());
-    total += parseInt($('input[name=excitement]:checked').val());
-    total += parseInt($('input[name=sand]:checked').val());
+    var total = 0;
+    for (var i = 0; i < answers.length; i++) {
+      total += parseInt($('input[name='+answers[i]+']:checked').val());
+    }
 
     if(total < 6){
       hideAllDestinations();
