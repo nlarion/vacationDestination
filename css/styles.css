@@ -3,6 +3,19 @@ body {
 
 }
 
+h1 {
+  color: #FF7221;
+}
+
 .carousel h1, h2, h3 {
   text-align: center;
+  color: black;
+}
+
+.btn-success, .btn-danger {
+      float: right;
+}
+
+.btn {
+  margin: 5px;
 }
