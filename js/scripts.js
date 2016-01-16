@@ -8,12 +8,9 @@ $(document).ready(function(){
   $('.guy1').fadeIn();
 
   $('.carousel').on('slide.bs.carousel',function(e){
-    var slideFrom = $(this).find('.active').index();
     var slideTo = $(e.relatedTarget).index();
-    $('.guy'+slideFrom).fadeOut();
-    $('.guy'+slideTo).fadeIn();
-
-
+    $('.guy').empty();
+    $('.guy').append('<img src="images/guy'+slideTo+'.png">');
   });
 
   $('#reset').click(function(){
@@ -36,7 +33,7 @@ $(document).ready(function(){
       $('.vla').show();
     }else if(total > 5 && total < 11){
       hideAllDestinations();
-      $('.deMoines').show();
+      $('.moon').show();
     }else {
       hideAllDestinations();
       $('.risa').show();
