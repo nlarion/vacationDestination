@@ -1,23 +1,26 @@
 
 $(document).ready(function(){
-  $(".carousel").carousel(1);
-  var answers = ["coffee","water","wakeUp","excitement","sand"];
-  var destinations = ["deMoines","seattle","vla","moon","risa"];
+  $('.carousel').carousel(1);
+  var answers = ['coffee','water','wakeUp','excitement','sand'];
+  var destinations = ['deMoines','seattle','vla','moon','risa'];
 
   hideAllDestinations();
 
-  $("#reset").click(function(){
+  $('.carousel').on('slide.bs.carousel',function(e){
+    var slideTo = $(e.relatedTarget).index();
+    console.log(slideTo);
+  });
+
+  $('#reset').click(function(){
     $('.carousel').carousel(1);
     $('.btn').removeClass('active');
     answers.forEach(function(arr){
-      $('#'+arr+"1").parent().addClass('active');
-      $('#'+arr+"1").prop('checked',true);
+      $('#'+arr+'1').parent().addClass('active');
+      $('#'+arr+'1').prop('checked',true);
     });
-
   });
 
   $('form').submit(function(event){
-
     var total = 0;
     for (var i = 0; i < answers.length; i++) {
       total += parseInt($('input[name='+answers[i]+']:checked').val());
@@ -34,10 +37,7 @@ $(document).ready(function(){
       $('.risa').show();
     }
 
-
     $('.carousel').carousel(7);
-
-    console.log(total);
     event.preventDefault();
   });
 
