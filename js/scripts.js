@@ -5,10 +5,15 @@ $(document).ready(function(){
   var destinations = ['deMoines','seattle','vla','moon','risa'];
 
   hideAllDestinations();
+  $('.guy1').fadeIn();
 
   $('.carousel').on('slide.bs.carousel',function(e){
+    var slideFrom = $(this).find('.active').index();
     var slideTo = $(e.relatedTarget).index();
-    console.log(slideTo);
+    $('.guy'+slideFrom).fadeOut();
+    $('.guy'+slideTo).fadeIn();
+
+
   });
 
   $('#reset').click(function(){
